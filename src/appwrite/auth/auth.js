@@ -35,8 +35,8 @@ export class AuthService {
     try {
       // In newer SDK, the method is createEmailPasswordSession
       const session = await this.account.createEmailPasswordSession({
-        email,
-        password,
+        email: email,
+        password: password,
       });
 
       return session;
@@ -52,8 +52,8 @@ export class AuthService {
       return user;
     } catch (error) {
       console.error("Error in getCurrentUser:", error);
-      // you might want to rethrow or return null depending on use-case
-      throw error;
+      // return null if no user is logged in
+      return null;
     }
   }
 

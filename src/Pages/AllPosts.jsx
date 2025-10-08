@@ -4,15 +4,16 @@ import { Container, PostCards } from "../components/index.js";
 
 const AllPosts = () => {
   const [posts, setPosts] = useState([]);
-  useEffect(() => {}, []);
-  appwriteService
-    .getPosts([])
-    .then((posts) => {
-      if (posts) {
-        setPosts(posts.rows);
-      }
-    })
-    .catch((error) => console.log(error));
+  useEffect(() => {
+    appwriteService
+      .getPosts([])
+      .then((posts) => {
+        if (posts) {
+          setPosts(posts.rows);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <div className="w-full py-8">
       <Container>

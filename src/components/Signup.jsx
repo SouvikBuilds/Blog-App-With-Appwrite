@@ -20,8 +20,8 @@ const Signup = () => {
         const userData = await authService.getCurrentUser();
         if (userData) {
           dispatch(login(userData));
-          navigate("/");
         }
+        navigate("/");
       }
     } catch (error) {
       setError(error.message);
@@ -53,7 +53,7 @@ const Signup = () => {
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
-        <form onSubmit={handleSubmit(signUp)}>
+        <form onSubmit={() => handleSubmit(signUp)}>
           <div className="space-y-5">
             <InputBox
               label="Full Name: "
